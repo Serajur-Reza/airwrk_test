@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import axios from "axios";
 import {
@@ -9,7 +7,6 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  DialogContentText,
 } from "@mui/material";
 
 function App() {
@@ -30,8 +27,6 @@ function App() {
       .catch((err) => setData(null));
   }, []);
 
-  console.log(data);
-
   const handleEdit = (id, item) => {
     setEditId(id);
     setOpen(true);
@@ -40,17 +35,14 @@ function App() {
       username: item.username,
       email: item.email,
     });
-    console.log("edited", id, item);
   };
 
   const handleForm = (e) => {
-    console.log(e.target.value);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleDelete = (id) => {
     const tempData = data.filter((item) => item.id !== id);
-    console.log(tempData);
     setData(tempData);
   };
 
